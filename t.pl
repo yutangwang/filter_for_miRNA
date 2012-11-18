@@ -1,6 +1,7 @@
 #!/usr/bin/perl
 use strict;
 use Data::Dumper;
+(@ARGV == 3) || die "Usage: perl $0 <mipred_result.txt> <mfe_to_filter> <out_dir>\n";
 sub gcc{
 my ($gc,$i,$seq_gc);
 my $c=0;
@@ -14,7 +15,6 @@ while ($i < $length_of_seq) {
 }
 $gc=sprintf("%.2f",($c/$length_of_seq));
 }
-(@ARGV == 3) || die "Usage: perl $0 <mipred_result.txt> <mfe_to_filter> <out_dir>\n";
 my ($mipred,$mfe_to_filter,$out_dir)=@ARGV;
 `mkdir -p $out_dir\n`;
 open (OUT1,">$out_dir/selected_mipred.xls") || die $!;
